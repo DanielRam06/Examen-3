@@ -6,8 +6,11 @@ import java.io.IOException;
 
 public class Lector {
     // Ruta del archivo CSV y archivo de salida
-    private String archivoCSV = "emails.csv";
+    private String archivoCSV = "emails.csv"; 
     private String archivoSalida = "172020.txt";
+    //o si quiere cambiarlo con direccion aqui esta igual profe:
+   // private String archivoCSV = "C:\\Users\\52962\\Desktop/emails.csv";
+    //private String archivoSalida = "C:\\Users\\52962\\Desktop\\172020.txt";
     // Número de columnas
     private int numColumnas = 3002;
     private int[] sumas = new int[numColumnas];
