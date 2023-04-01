@@ -5,17 +5,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Lector {
-    // Ruta del archivo CSV y archivo de salida
-    private String archivoCSV = "emails.csv"; 
-    private String archivoSalida = "172020.txt";
-    //o si quiere cambiarlo con direccion aqui esta igual profe:
-   // private String archivoCSV = "C:\\Users\\52962\\Desktop/emails.csv";
-    //private String archivoSalida = "C:\\Users\\52962\\Desktop\\172020.txt";
-    // Número de columnas
+    //numero de columnas
     private int numColumnas = 3002;
     private int[] sumas = new int[numColumnas];
 
     public void ejecutar(String id) {
+        // Construir nombres de archivos usando el ID
+        String archivoCSV  = "emails.csv";
+        String archivoSalida = id + ".txt";
         // Calcular filas de inicio y fin
         int filaInicio = Integer.parseInt(id.substring(3)) % 1000 -1; //restandole 1 de la fila de eneunciados
         int filaFin = filaInicio + 49;//TOMANDO la logica que la fila inicio ya es 1 + 49 = 50
@@ -36,10 +33,8 @@ public class Lector {
                     String[] columnas = linea.split(",");
                     for (int i = 0; i < columnas.length && i < numColumnas; i++) {
                         try {
-                            // Cambiar a Integer.parseInt()
                             sumas[i] += Integer.parseInt(columnas[i]);
                         } catch (NumberFormatException e) {
-                            // Ignorar si no se puede convertir a Integer
                         }
                     }
                 }
@@ -47,8 +42,7 @@ public class Lector {
             // Escribir resultados
             for (int i = 0; i < titulos.length; i++) {
                 escritor.write(String.format("%-20s", titulos[i]));
-                if (i < sumas.length) {
-                    // No es necesario redondear, ya que sumas[i] es un entero
+                if (i < sumas.length){
                     escritor.write(String.format("%20d", sumas[i]));
                 }
                 escritor.newLine();
